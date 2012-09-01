@@ -7,14 +7,24 @@ describe('Game loop', function(){
         game = new Telepong.Game
     })
 
-    it('Should run', function(){
+    it('should run', function(){
         game.run()
-        return game.running
+        expect(game.running).toBe(true)
     })
 
-    it('Should call the step function', function(){
-        game.run()
-        
+    it('should call the step function', function(){
+
+        runs(function(){
+            game.run()
+        })
+
+        spyOn(game, 'step')
+
+        waitsFor(function(){
+            console.log(game.step.callCount)
+            return game.step.callCount > 3
+        }, 'game.step() should have been called', 300)
+
     })
 
 })
