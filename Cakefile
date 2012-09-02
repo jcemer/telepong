@@ -2,6 +2,7 @@ flour = require 'flour'
 
 task 'build', ->
     bundle [
+        'vendor/eventemitter2.js'
         'lib/main.js'
         'lib/telepong.js'
         'lib/game.js'

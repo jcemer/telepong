@@ -1,6 +1,7 @@
 
-describe('Game', function(){
+describe('Game', function () {
     var game
+      , noop = function () {}
 
     beforeEach(function () {
         game = new Telepong.Game
@@ -9,35 +10,43 @@ describe('Game', function(){
 
     afterEach(function () {
         this.removeAllSpies()
-        delete game.step
+        game.step = noop
     })
 
     // TESTS
 
-    it('start stopped', function(){
+    it('start stopped', function () {
         expect(game.running).toBeFalsy()
     })
 
-    it('should run', function(){
+    it('should run', function () {
         game.run()
         expect(game.running).toBeTruthy()
     })
 
-    it('should pause', function(){
+    it('should pause', function () {
         game.pause()
         expect(game.running).toBeFalsy()
     })
 
-    it('should pause after run', function(){
+    it('should pause after run', function () {
         game.run()
         game.pause()
         expect(game.running).toBeFalsy()
+    })
+
+    it('step should emit "step"', function () {
+        var callback = jasmine.createSpy()
+        game.on('step', callback)
+
+        game.step()
+        expect(callback).wasCalled()
     })
 
     it('running state should call the step function', function () {
         game.run()
 
-        waitsFor(function(){
+        waitsFor(function () {
             return game.step.wasCalled
         }, 'game.step() should have been called')
     })
@@ -45,7 +54,7 @@ describe('Game', function(){
     it('running state should call the step function repeatedly', function () {
         game.run()
 
-        waitsFor(function(){
+        waitsFor(function () {
             return game.step.callCount > 1
         }, 'game.step() should have been called twice')
     })
@@ -53,7 +62,7 @@ describe('Game', function(){
     it('running state should call the step function repeatedly', function () {
         game.run()
 
-        waitsFor(function(){
+        waitsFor(function () {
             return game.step.callCount > 1
         }, 'game.step() should have been called twice')
     })
