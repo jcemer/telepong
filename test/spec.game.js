@@ -58,14 +58,6 @@ describe('Game', function () {
         }, 'game.step() should have been called twice')
     })
 
-    it('running state should call the step function repeatedly', function () {
-        game.run()
-
-        waitsFor(function () {
-            return game.step.callCount > 1
-        }, 'game.step() should have been called twice')
-    })
-
     // it('paused state cant call step at least in one second', function () {
     //     var steps = 0
     //       , callCount
