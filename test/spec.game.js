@@ -12,7 +12,7 @@ describe('Game', function () {
         game.step = noop
     })
 
-    // TESTS
+    /* TESTS */
 
     it('start stopped', function () {
         expect(game.running).toBeFalsy()
@@ -66,18 +66,18 @@ describe('Game', function () {
         }, 'game.step() should have been called twice')
     })
 
-    it('paused state cant call step at least in one second', function () {
-        var steps = 0
-          , callCount
+    // it('paused state cant call step at least in one second', function () {
+    //     var steps = 0
+    //       , callCount
 
-        game.run()
-        game.pause()
-        callCount = game.step.callCount
+    //     game.run()
+    //     game.pause()
+    //     callCount = game.step.callCount
 
-        waitsFor(function () {
-            return ++steps > (1000 / jasmine.WaitsForBlock.TIMEOUT_INCREMENT) 
-                && game.step.callCount - 1 <= callCount
-        }, 'game.step() should not have been called')
-    })
+    //     waitsFor(function () {
+    //         return ++steps > (1000 / jasmine.WaitsForBlock.TIMEOUT_INCREMENT) 
+    //             && game.step.callCount - 1 <= callCount
+    //     }, 'game.step() should not have been called')
+    // })
 
 })
