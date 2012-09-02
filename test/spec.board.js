@@ -18,6 +18,20 @@ describe('Board', function () {
         expect(board.ctx.canvas).toBeTruthy()
     })
 
+    it('clear can turn all to black', function () {
+        var pixels, i, len
+
+        board.clear()
+
+        pixels = board.ctx.getImageData(0, 0, board.canvas.width, board.canvas.height).data
+        for (i = 0, len = pixels.length; i < len; i += 4) {
+            expect(pixels[i + 0]).toBe(0)
+            expect(pixels[i + 1]).toBe(0)
+            expect(pixels[i + 2]).toBe(0)
+            expect(pixels[i + 3]).toBe(255)
+        }
+    })
+
     it('init should append canvas to body', function () {
         board.init()
         expect(document.body.appendChild).toHaveBeenCalledWith(board.canvas)
