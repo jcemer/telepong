@@ -3,7 +3,10 @@ describe('Board', function () {
 
     beforeEach(function () {
         board = new Telepong.Board
-        spyOn(document.body, 'appendChild')
+    })
+
+    afterEach(function () {
+        board.removeEventListenters()
     })
 
     /* TESTS */
@@ -18,35 +21,47 @@ describe('Board', function () {
         expect(board.ctx.canvas).toBeTruthy()
     })
 
-    it('clear can turn all to black', function () {
-        var pixels, i, len
+    it('this.clear can turn all to black', function () {
+        var pixels, i, len, isDark = true
 
         board.clear()
 
         pixels = board.ctx.getImageData(0, 0, board.canvas.width, board.canvas.height).data
         for (i = 0, len = pixels.length; i < len; i += 4) {
-            expect(pixels[i + 0]).toBe(0)
-            expect(pixels[i + 1]).toBe(0)
-            expect(pixels[i + 2]).toBe(0)
-            expect(pixels[i + 3]).toBe(255)
+            pixels[i + 0] != 0 && (isDark = false)
+            pixels[i + 1] != 0 && (isDark = false)
+            pixels[i + 2] != 0 && (isDark = false)
+            pixels[i + 3] != 255 && (isDark = false)  
         }
+        expect(isDark).toBeTruthy()
     })
 
-    it('init should append canvas to body', function () {
+    it('this.resize should get document width', function () {
+        board.resize()
+        expect(board.canvas.width).toBe(document.width)
+    })
+
+    it('this.resize should get document height', function () {
+        board.resize()
+        expect(board.canvas.height).toBe(document.height)
+    })
+
+    it('this.init should append canvas to body', function () {
+        spyOn(document.body, 'appendChild')
         board.init()
         expect(document.body.appendChild).toHaveBeenCalledWith(board.canvas)
     })
 
-    it('init should call resize', function () {
+    it('resize window should call this.resize', function () {
         spyOn(board, 'resize')
-        board.init()
-        expect(board.resize).wasCalled()
+        bean.fire(window, 'resize')
+        expect(board.resize).toHaveBeenCalled()
     })
 
-    it('init should call clear', function () {
+    it('resize window should call this.clear', function () {
         spyOn(board, 'clear')
-        board.init()
-        expect(board.clear).wasCalled()
+        bean.fire(window, 'resize')
+        expect(board.clear).toHaveBeenCalled()
     })
 
 })
