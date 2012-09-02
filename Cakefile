@@ -5,7 +5,8 @@ task 'build', ->
         'vendor/eventemitter2.js'
         'lib/main.js'
         'lib/telepong.js'
-        'lib/game.js'
+        'lib/telepong.game.js'
+        'lib/telepong.board.js'
     ], 'dist/telepong.js'
 
 task 'watch', ->

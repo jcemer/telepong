@@ -1,4 +1,3 @@
-
 describe('Game', function () {
     var game
       , noop = function () {}
