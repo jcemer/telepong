@@ -2,7 +2,7 @@ describe('Board', function () {
     var board
 
     beforeEach(function () {
-        board = new Telepong.Board
+        board = new Telepong.Board(window)
     })
 
     afterEach(function () {
@@ -36,20 +36,55 @@ describe('Board', function () {
         expect(isDark).toBeTruthy()
     })
 
-    it('this.resize should get document width', function () {
-        board.resize()
-        expect(board.canvas.width).toBe(document.width)
+    it('this.resize should get window dimensions', function () {
+        var width = dimension(window, 'width')
+          , height = dimension(window, 'height')
+
+        expect(board.canvas.width).toBe(width)
+        expect(board.canvas.height).toBe(height)
     })
 
-    it('this.resize should get document height', function () {
-        board.resize()
-        expect(board.canvas.height).toBe(document.height)
+    it('this.resize should get document dimensions', function () {
+        var width = dimension(document, 'width')
+          , height = dimension(document, 'height')
+
+        board = new Telepong.Board(document)
+
+        expect(board.canvas.width).toBe(width)
+        expect(board.canvas.height).toBe(height)
+    })
+
+    it('this.resize should get element dimensions', function () {
+        var html = document.createElement('div'),
+            width, height
+        
+        html.setAttribute('style', 'width:10px; height:20px')
+        document.body.appendChild(html)
+
+        width = dimension(html, 'width')
+        height = dimension(html, 'height')
+
+        board = new Telepong.Board(html)
+
+        document.body.removeChild(html)
+
+        expect(board.canvas.width).toBe(width)
+        expect(board.canvas.height).toBe(height)
     })
 
     it('this.init should append canvas to body', function () {
         spyOn(document.body, 'appendChild')
         board.init()
         expect(document.body.appendChild).toHaveBeenCalledWith(board.canvas)
+    })
+
+    it('this.init should append canvas to element', function () {
+        var html = document.createElement('div')
+        spyOn(html, 'appendChild')
+
+        board = new Telepong.Board(html)
+        board.init()
+        expect(html.appendChild).toHaveBeenCalledWith(board.canvas)
     })
 
     it('resize window should call this.resize', function () {
