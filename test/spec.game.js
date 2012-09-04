@@ -72,4 +72,11 @@ describe('Game', function () {
     //     }, 'game.step() should not have been called')
     // })
 
+    it('resize window should call this.resize', function () {
+        spyOn(game, 'resize')
+        bean.fire(game, 'resize.Telepong')
+        expect(game.resize).toHaveBeenCalled()
+    })
+
+
 })

@@ -1,8 +1,9 @@
 describe('Board', function () {
-    var board
+    var game, board
 
     beforeEach(function () {
-        board = new Telepong.Board(window)
+        game = {}
+        board = new Telepong.Board(game, window)
     })
 
     afterEach(function () {
@@ -40,6 +41,8 @@ describe('Board', function () {
         var width = dimension(window, 'width')
           , height = dimension(window, 'height')
 
+        board.resize()
+
         expect(board.canvas.width).toBe(width)
         expect(board.canvas.height).toBe(height)
     })
@@ -48,7 +51,8 @@ describe('Board', function () {
         var width = dimension(document, 'width')
           , height = dimension(document, 'height')
 
-        board = new Telepong.Board(document)
+        board = new Telepong.Board(game, document)
+        board.resize()
 
         expect(board.canvas.width).toBe(width)
         expect(board.canvas.height).toBe(height)
@@ -64,12 +68,20 @@ describe('Board', function () {
         width = dimension(html, 'width')
         height = dimension(html, 'height')
 
-        board = new Telepong.Board(html)
+        board = new Telepong.Board(game, html)
+        board.resize()
 
         document.body.removeChild(html)
 
         expect(board.canvas.width).toBe(width)
         expect(board.canvas.height).toBe(height)
+    })
+
+    it('this.resize can fire resize event', function () {
+        var callback = jasmine.createSpy()
+        bean.add(game, 'resize.Telepong', callback)
+        board.resize()
+        expect(callback).wasCalled()
     })
 
     it('this.init should append canvas to body', function () {
@@ -82,7 +94,7 @@ describe('Board', function () {
         var html = document.createElement('div')
         spyOn(html, 'appendChild')
 
-        board = new Telepong.Board(html)
+        board = new Telepong.Board(game, html)
         board.init()
         expect(html.appendChild).toHaveBeenCalledWith(board.canvas)
     })

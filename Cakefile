@@ -6,6 +6,7 @@ task 'build', ->
         'lib/telepong.js'
         'lib/game.js'
         'lib/board.js'
+        'lib/ball.js'
     ], 'dist/telepong.js'
 
 task 'watch', ->
