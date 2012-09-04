@@ -7,9 +7,7 @@
     "test": "test"
   },
   "dependencies": {
-    "flour": "~0.2.1",
-    "express": "",
-    "socket.io": ""
+    "flour": "~0.2.1"
   },
   "devDependencies": {},
   "scripts": {
