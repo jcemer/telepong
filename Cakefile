@@ -2,7 +2,7 @@ flour = require 'flour'
 
 task 'build', ->
     bundle [
-        'lib/main.js'
+        'lib/utils.js'
         'lib/telepong.js'
         'lib/puck.js'
         'lib/game.js'

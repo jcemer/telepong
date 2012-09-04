@@ -4,23 +4,22 @@
 <title>Telepong</title>
 <style>
     body {
-        background: #111;
-        overflow: hidden;
+        background: #222;
+        margin: 0;
     }
 </style>
-<script src="http://localhost:8000/socket.io/socket.io.js"></script>
+<script src="socket.io/socket.io.js"></script>
 <script src="dist/telepong.js"></script>
 <canvas id="stage"></canvas>
 <script>
 (function(){
-
     var stage = document.getElementById('stage')
-      , socket = io.connect('http://localhost:8000')
+      , socket = io && io.connect('http://localhost:8000')
 
-    stage.width = window.innerWidth
-    stage.height = window.innerHeight
+    stage.width = dimension(window, 'width')
+    stage.height = dimension(window, 'height')
 
-    new Telepong.Game(stage, socket).run()
+    new Telepong.init(stage, socket)
 
 }())
 </script>
