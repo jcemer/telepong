@@ -10,10 +10,14 @@ app.configure(function () {
 })
 
 io.sockets.on('connection', function (socket) {
+
     socket.on('throwball', function(data) {
         console.log('pass', data)
         socket.broadcast.emit('getball', data)
     })
+
+    socket.on('disconnect', function () {
+        console.log('DI S  CO N  CT')
+    })
+    
 })
-
-

@@ -1,33 +1,30 @@
 {
-  "name": "telepong",
-  "version": "0.1.0",
-  "description": "HTML5 multiplayer pong with mobile support",
-  "main": "dist/telepong.js",
-  "directories": {
+    "name": "telepong",
+    "version": "0.1.0",
+    "description": "HTML5 multiplayer pong with mobile support",
+    "main": "dist/telepong.js",
+    "directories": {
     "test": "test"
-  },
-  "dependencies": {
-    "flour": "~0.2.1",
-    "express": "",
-    "socket.io": ""
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "mocha"
-  },
-  "repository": {
+    },
+    "dependencies": {
+        "flour": "~0.2.1",
+        "express": "",
+        "socket.io": ""
+    },
+    "devDependencies": {},
+    "repository": {
     "type": "git",
-    "url": "git://github.com/jcemer/telepong.git"
-  },
-  "keywords": [
-    "game",
-    "pong",
-    "html5",
-    "javascript",
-    "canvas",
-    "b2g",
-    "openwebapps"
-  ],
-  "author": "Jean Carlo Emer & Ricardo Tomasi",
-  "license": "MIT"
+        "url": "git://github.com/jcemer/telepong.git"
+    },
+    "keywords": [
+        "game",
+        "pong",
+        "html5",
+        "javascript",
+        "canvas",
+        "b2g",
+        "openwebapps"
+    ],
+    "author": "Jean Carlo Emer & Ricardo Tomasi",
+    "license": "MIT"
 }

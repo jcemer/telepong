@@ -5,6 +5,7 @@ task 'build', ->
         'lib/utils.js'
         'lib/telepong.js'
         'lib/puck.js'
+        'lib/paddle.js'
         'lib/game.js'
     ], 'dist/telepong.js'
 

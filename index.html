@@ -11,10 +11,11 @@
 <script src="socket.io/socket.io.js"></script>
 <script src="dist/telepong.js"></script>
 <canvas id="stage"></canvas>
+
 <script>
 (function(){
     var stage = document.getElementById('stage')
-      , socket = io && io.connect('http://localhost:8000')
+      , socket = io && io.connect()
 
     stage.width = dimension(window, 'width')
     stage.height = dimension(window, 'height')
