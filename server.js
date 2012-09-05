@@ -6,7 +6,7 @@ var express = require('express')
 server.listen(8000)
 
 app.configure(function () {
-    app.use(express.static(__dirname))
+    app.use(express.static(__dirname + '/public'))
 })
 
 io.sockets.on('connection', function (socket) {
@@ -14,10 +14,6 @@ io.sockets.on('connection', function (socket) {
     socket.on('throwball', function(data) {
         console.log('pass', data)
         socket.broadcast.emit('getball', data)
-    })
-
-    socket.on('disconnect', function () {
-        console.log('DI S  CO N  CT')
     })
     
 })

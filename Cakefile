@@ -7,7 +7,7 @@ task 'build', ->
         'lib/puck.js'
         'lib/paddle.js'
         'lib/game.js'
-    ], 'dist/telepong.js'
+    ], 'public/telepong.js'
 
 task 'watch', ->
 
