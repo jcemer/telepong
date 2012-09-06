@@ -2,7 +2,7 @@
     "name": "telepong",
     "version": "0.1.0",
     "description": "HTML5 multiplayer pong with mobile support",
-    "main": "dist/telepong.js",
+    "main": "public/telepong.js",
     "directories": {
     "test": "test"
     },

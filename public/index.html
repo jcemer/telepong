@@ -9,11 +9,16 @@
     }
 </style>
 <script src="telepong.js"></script>
+<script src="socket.io/socket.io.js"></script>
 
 <canvas id="stage"></canvas>
 
 <script>
     var stage = document.getElementById('stage')
+      , socket = io.connect()
 
-    Telepong.init(stage)
+    stage.width = window.innerWidth
+    stage.height = window.innerHeight
+
+    Telepong.init(stage, socket)
 </script>

@@ -11,9 +11,9 @@ app.configure(function () {
 
 io.sockets.on('connection', function (socket) {
 
-    // throwball -> getball
-    socket.on('throwball', function (data) {
+    socket.on('throwball', function(data) {
+        console.log('pass', data)
         socket.broadcast.emit('getball', data)
     })
-
+    
 })
