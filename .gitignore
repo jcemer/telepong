@@ -19,4 +19,4 @@ thumbs.db
 
 *.sublime-workspace
 
-dist/*.js
+public/*.js
