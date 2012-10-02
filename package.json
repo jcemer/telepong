@@ -3,9 +3,6 @@
     "version": "0.1.0",
     "description": "HTML5 multiplayer pong with mobile support",
     "main": "public/telepong.js",
-    "directories": {
-    "test": "test"
-    },
     "dependencies": {
         "flour": "~0.2.1",
         "express": "",
@@ -13,7 +10,7 @@
     },
     "devDependencies": {},
     "repository": {
-    "type": "git",
+        "type": "git",
         "url": "git://github.com/jcemer/telepong.git"
     },
     "keywords": [
